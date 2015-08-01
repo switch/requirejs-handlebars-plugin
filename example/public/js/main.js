@@ -1,12 +1,14 @@
 define(function (require) {
-  var template = require("hbs!template");
   var Handlebars = require("handlebars");
+  var template = require("hbs!templates/template");
+  var partial = require("hbs_partial!templates/partial");
+
   Handlebars.registerHelper("foo", function () {
     return "bar";
   });
-  var context = {
+
+  var content = template({
     usingHandlebarsRuntime: Handlebars.precompile ? "nope" : "yep"
-  };
-  var content = template(context);
+  });
   document.body.insertAdjacentHTML("beforeend", content);
 });

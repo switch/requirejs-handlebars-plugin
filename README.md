@@ -1,7 +1,7 @@
 # requirejs-handlebars-plugin
 A set of simple Handlebars plugins for RequireJS.  Includes support for both loading and precompiling templates and partials.
 
-Based on work from [epeli/requirejs-hbs](https://github.com/epeli/requirejs-hbs) this is a simpler version of [SlexAxton/require-handlebars-plugin][] without any extra helpers. Just a simple set of [Handlebars][] loader and pre-compiler plugins for [RequireJS][].
+Based on work from [epeli/requirejs-hbs][] this is a simpler version of [SlexAxton/require-handlebars-plugin][] without any extra helpers. Just a simple set of [Handlebars][] loader and pre-compiler plugins for [RequireJS][].
 
 These plugins and the example works with the latest version of RequireJS (2.1.20) and Handlebars (3.0.3)
 
@@ -106,15 +106,23 @@ handlebars module path to a runtime only library in your build file (see
 
 ## Example
 
-First of all, serve the files of the `example` directory with a HTTP server. If
-you have python installed, you can run the `serve` script that will start a
-server on port 8000.
+### Getting Started
+
+The example requires [nodejs](https://nodejs.org/).  You can install the dependencies and start serving the example in development mode (dynamic require) with the following steps:
+
+```
+$ cd example
+$ npm install
+$ node app.js
+```
+
+The example node application will start serving on port 3000.
 
 The example should run without any problem. You can see in the browser
 developer tools that all the files are loaded uncompressed.
 
 You can use the `r.js` command to build the project with the provided
-build configuration [app.build.js](/example/app.build.js). See that this file
+build configuration [build.js](/example/build.js). See that this file
 is configured to include the Handlebars runtime instead of the full library.
 
 You can modify the [index file](/example/index.html) to use your freshly built
@@ -123,14 +131,14 @@ only one file is loaded containing everything your app need to be run.
 
 ```
 $ cd example
-$ ./serve
-$ r.js -o app.build.js
-$ firefox http://localhost:8000
+$ node node_modules/requirejs/bin/r.js -o build.js
+$ node app.js
 ```
 
 
 [Handlebars]: http://handlebarsjs.com/
 [RequireJS]: http://requirejs.org/
+[epeli/requirejs-hbs]: https://github.com/epeli/requirejs-hbs
 [SlexAxton/require-handlebars-plugin]: https://github.com/SlexAxton/require-handlebars-plugin
 [text]: https://github.com/requirejs/text
 [map]: http://requirejs.org/docs/api.html#config-map

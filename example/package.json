@@ -13,5 +13,8 @@
     "handlebars": "^3.0.3",
     "requirejs": "^2.1.20",
     "requirejs-text": "^2.0.12"
+  },
+  "devDependencies": {
+    "requirejs": "^2.1.20"
   }
 }
