@@ -1,0 +1,17 @@
+{
+  "name": "requirejs-handlebars-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nick Nance",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.2",
+    "handlebars": "^3.0.3",
+    "requirejs": "^2.1.20",
+    "requirejs-text": "^2.0.12"
+  }
+}
