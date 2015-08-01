@@ -1,14 +1,16 @@
 # requirejs-handlebars-plugin
 A set of simple Handlebars plugins for RequireJS.  Includes support for both loading and precompiling templates and partials.
 
-Based on work from [epeli/requirejs-hbs](https://github.com/epeli/requirejs-hbs) this is a simpler version of [SlexAxton/require-handlebars-plugin][] without any extra helpers. Just a simple set of [Handlebars][] loader and precompiler for [RequireJS][].
+Based on work from [epeli/requirejs-hbs](https://github.com/epeli/requirejs-hbs) this is a simpler version of [SlexAxton/require-handlebars-plugin][] without any extra helpers. Just a simple set of [Handlebars][] loader and pre-compiler plugins for [RequireJS][].
+
+These plugins and the example works with the latest version of RequireJS (2.1.20) and Handlebars (3.0.3)
 
 ## Quick start
 
-This plugin uses the AMD [text][] loader plugin to handle all templates loads.
+The plugins use the AMD [text][] loader plugin to handle all templates loads.
 You will have to grab a copy of the [Handlebars][] library too.
 
-Download all this and put it in a public folder, then add the following
+Download all this and put it in a lib folder, then add the following
 RequireJS configuration:
 
 ```javascript
@@ -16,14 +18,8 @@ require.config({
   baseUrl: ...,
 
   paths: {
-    handlebars: 'path/to/handlebars',
+    handlebars: 'path/to/handlebars.amd',
     text: 'path/to/text'
-  },
-
-  shim: {
-    handlebars: {
-      exports: 'Handlebars'
-    }
   },
 
   packages: [
@@ -31,17 +27,37 @@ require.config({
       name: 'hbs',
       location: 'path/to/hbs/folder',
       main: 'hbs'
+    }, {
+      name: 'hbs_partial',
+      location: 'path/to/hbs/folder',
+      main: 'hbs_partial'
     }
   ]
 });
 ```
 
-After that requirejs-hbs can be used like the original Handlebars plugin:
+After that these plugins can be used like the original Handlebars plugin:
 
 ```javascript
-require(['hbs!app/templates/hello'], function (template) {
-  document.body.innerHTML = template({name: "Epeli"});
+require(['hbs!templates/hello','hbs_partial!templates/form'], function (template, partial) {
+  document.body.innerHTML = template({name: "Switch"});
 });
+```
+templates/hello.hbs
+```html
+<p>{{name}}</p>
+{{> address}}
+```
+
+templates/form.hbs
+```html
+<form>
+email:<br>
+<input type="email" name="email">
+<br>
+Age:<br>
+<input type="number" name="age">
+</form>
 ```
 
 ## Configure
@@ -101,8 +117,8 @@ You can use the `r.js` command to build the project with the provided
 build configuration [app.build.js](/example/app.build.js). See that this file
 is configured to include the Handlebars runtime instead of the full library.
 
-You can modify the [index file](/example/index.html) to use your freshely built
-module, juste follow the commentary. Refresh the page, and you will see that
+You can modify the [index file](/example/index.html) to use your freshly built
+module, just follow the commentary. Refresh the page, and you will see that
 only one file is loaded containing everything your app need to be run.
 
 ```
