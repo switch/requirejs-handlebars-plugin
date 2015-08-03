@@ -9,7 +9,7 @@
     // Set here the path to either the full handlebars library if you want to
     // be able to compile templates on the client, or the runtime only.
     "handlebars": "node_modules/handlebars/dist/amd/handlebars",
-    "handlebars.runtime": "node_modules/handlebars/dist/amd/handlebars.runtime",
+    "handlebars.runtime": "node_modules/handlebars/dist/handlebars.runtime.amd",
   },
 
   name: "js/main",
